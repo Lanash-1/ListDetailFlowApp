@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.adapter.FragmentStateAdapter
+import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.tabs.TabLayout
 
 
 class MainActivity : AppCompatActivity() {
@@ -30,7 +33,16 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
 
 
+        val tabLayout = findViewById<TabLayout>(R.id.tabLayout)
+        val viewPager: ViewPager2 = findViewById<ViewPager2>(R.id.viewPager)
+
+        tabLayout.setupWithViewPager(viewPager)
+
+        val viewPagerAdapter = ViewPagerAdapter()
+
+
 
 
     }
 }
+
