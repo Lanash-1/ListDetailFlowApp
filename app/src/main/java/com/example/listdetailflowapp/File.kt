@@ -1,5 +1,7 @@
 package com.example.listdetailflowapp
 
+import java.io.Serializable
+
 data class File(
     val fileName: String,
     val fileExtension: String,
@@ -10,4 +12,4 @@ data class File(
     val hidden: Boolean,
     val readable: Boolean,
     val writable: Boolean
-)
+) : Serializable

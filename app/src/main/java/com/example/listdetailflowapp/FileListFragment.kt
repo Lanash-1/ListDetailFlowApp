@@ -1,10 +1,14 @@
 package com.example.listdetailflowapp
 
+import android.content.Intent
 import android.os.Bundle
+import android.telecom.Call
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -65,9 +69,20 @@ class FileListFragment : Fragment() {
         val adapter = FileAdapter(files)
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerview)
         recyclerView.adapter = adapter
+        adapter.setOnItemClickListener(object : OnItemClickListener{
+            override fun onItemClick(position: Int) {
+                println("Position: $position")
+//                val viewModel: FileViewModel by viewModels()
+//                viewModel.file = files[position]
+//                println(viewModel.file)
+                val file = files[position]
+                val intent = Intent(activity, DetailsActivity::class.java).apply {
+                    putExtra("FILE", file)
+                }
+                startActivity(intent)
+            }
+        })
         recyclerView.layoutManager = LinearLayoutManager(context)
     }
-
-
 
 }
