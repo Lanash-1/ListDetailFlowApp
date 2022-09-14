@@ -17,7 +17,6 @@
         app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
     />
 
-
     <TextView
         android:id="@+id/fileNameText"
         android:layout_width="0dp"
