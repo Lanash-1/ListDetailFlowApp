@@ -40,6 +40,8 @@ class DetailsActivity : AppCompatActivity() {
             }
         }
 
+        binding.fileImage.setImageResource(file.image)
+
 
     }
 }

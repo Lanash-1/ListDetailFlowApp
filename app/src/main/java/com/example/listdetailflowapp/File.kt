@@ -3,6 +3,7 @@ package com.example.listdetailflowapp
 import java.io.Serializable
 
 data class File(
+    val image: Int,
     val fileName: String,
     val fileExtension: String,
     val location: String,
