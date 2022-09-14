@@ -7,10 +7,10 @@ import com.example.listdetailflowapp.databinding.ItemFileBinding
 
 
 class FileAdapter (
-    private var files: List<File>
+    var files: List<File>
 ) : RecyclerView.Adapter<FileAdapter.FileViewHolder>(), OnItemClickListener{
 
-    private lateinit var listener: OnItemClickListener
+    lateinit var listener: OnItemClickListener
 
     fun setOnItemClickListener(listener: OnItemClickListener){
         this.listener = listener
