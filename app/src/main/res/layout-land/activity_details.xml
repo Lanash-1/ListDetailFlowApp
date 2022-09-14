@@ -12,7 +12,8 @@
         android:layout_height="150dp"
         android:layout_margin="16dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.939"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/ic_launcher" />
@@ -21,42 +22,42 @@
         android:id="@+id/fileName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="Filename.ext"
-        android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fileImage"
-        app:layout_constraintVertical_bias="0.154" />
+        app:layout_constraintTop_toBottomOf="@+id/fileImage" />
 
     <TextView
         android:id="@+id/locationTxt"
-        android:layout_width="150dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:text="Location: "
         android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toTopOf="@+id/fileImage" />
+        android:layout_margin="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fileName" />
 
     <TextView
         android:id="@+id/location"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
         android:text="temp storage"
         android:textSize="16sp"
+        android:layout_margin="16dp"
         app:layout_constraintBaseline_toBaselineOf="@+id/locationTxt"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/locationTxt" />
 
     <TextView
         android:id="@+id/sizeTxt"
-        android:layout_width="150dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Size: "
@@ -70,16 +71,15 @@
         android:id="@+id/size"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
+        android:layout_margin="16dp"
         android:text="223 KB"
-        android:textSize="16sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/sizeTxt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/sizeTxt" />
 
     <TextView
         android:id="@+id/dateTxt"
-        android:layout_width="150dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Date Created: "
@@ -93,16 +93,15 @@
         android:id="@+id/date"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
         android:text="16/12/22"
-        android:textSize="16sp"
+        android:layout_margin="16dp"
         app:layout_constraintBaseline_toBaselineOf="@+id/dateTxt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/dateTxt" />
 
     <TextView
         android:id="@+id/hiddenTxt"
-        android:layout_width="150dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Hidden: "
@@ -116,16 +115,15 @@
         android:id="@+id/hidden"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
+        android:layout_margin="16dp"
         android:text="No"
-        android:textSize="16sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/hiddenTxt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/hiddenTxt" />
 
     <TextView
         android:id="@+id/readableTxt"
-        android:layout_width="150dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Readable: "
@@ -139,16 +137,16 @@
         android:id="@+id/readable"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
+        android:layout_margin="16dp"
+        android:layout_marginStart="12dp"
         android:text="Yes"
-        android:textSize="16sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/readableTxt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/readableTxt" />
 
     <TextView
         android:id="@+id/writableTxt"
-        android:layout_width="150dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Writable: "
@@ -162,19 +160,11 @@
         android:id="@+id/writable"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
+        android:layout_margin="16dp"
         android:text="Yes"
-        android:textSize="16sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/writableTxt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/writableTxt" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="350dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
