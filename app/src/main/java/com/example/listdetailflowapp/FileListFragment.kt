@@ -2,20 +2,17 @@ package com.example.listdetailflowapp
 
 import android.content.Intent
 import android.os.Bundle
-import android.telecom.Call
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 
 class FileListFragment : Fragment() {
 
-    var fileList = mutableListOf(
+    private var fileList = mutableListOf(
         File("report","pdf","local storage",1.0,"MB","8/9/22",false,true,true) ,
         File("group photo","jpg","sd card",223.0,"KB","22/12/21",false,true,true),
         File("exam_result","pdf","downloads",2.2,"MB","2/9/17",false,true,true),
