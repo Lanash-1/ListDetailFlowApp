@@ -1,29 +1,17 @@
 package com.example.listdetailflowapp
 
-import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.*
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-
 class FileListFragment : Fragment() {
 
-    var fileList = mutableListOf(
-        File(R.drawable.pdficon,"Report","pdf","local storage",1.0,"MB","8/9/22",false,true,true) ,
-        File(R.drawable.imageicon,"group photo","jpg","sd card",223.0,"KB","22/12/21",false,true,true),
-        File(R.drawable.pdficon,"Exam_result","pdf","downloads",2.2,"MB","2/9/17",false,true,true),
-        File(R.drawable.txticon,"details","txt","sd card",1.0,"KB","4/2/15",false,true,true),
-        File(R.drawable.docicon,"Resume_draft","doc","downloads",4.54,"MB","22/11/22",false,true,true),
-        File(R.drawable.imageicon,"photo_small","jpeg","local storage",99.9,"KB","3/10/19",false,true,true),
-        File(R.drawable.apkicon,"dream11","apk","downloads",22.3,"MB","30/2/11",false,true,true),
-        File(R.drawable.imageicon,"Screenshot_1122","jpeg","local storage",123.0,"KB","4/4/14",false,true,true),
-        File(R.drawable.ppticon,"presentation","pptx","sd card",5.6,"MB","6/12/12",false,true,true),
-        File(R.drawable.zipicon,"files_compressed","zip","downloads",1.1,"MB","17/2/17",false,true,true)
-    )
+    private var adapter = FileAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,50 +22,56 @@ class FileListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        println(arguments?.getInt("object"))
         val position = arguments?.getInt("object")
-        var files: List<File> = listOf()
+        var actionTitle = "Files"
+        val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerview)
+        val viewModel: FilesViewModel by activityViewModels()
         when(position){
             0 -> {
-                files = fileList
+                actionTitle = "All Files"
             }
             1 -> {
-                files = fileList.filter { it.fileExtension == "pdf" }
+                actionTitle = "PDF's"
             }
             2 -> {
-                files = fileList.filter { it.fileExtension == "jpg" || it.fileExtension == "jpeg" }
+                actionTitle = "Images"
             }
             3 -> {
-                files = fileList.filter { it.fileExtension == "apk" }
+                actionTitle = "APK's"
             }
             4 -> {
-                files = fileList.filter { it.fileExtension == "txt" }
+                actionTitle = "Text Files"
             }
             5 -> {
-                files = fileList.filter { it.fileExtension == "doc" }
+                actionTitle = "DOC's"
             }
             6 -> {
-                files = fileList.filter { it.fileExtension == "pptx" }
+                actionTitle = "PPT's"
             }
             7 -> {
-                files = fileList.filter { it.fileExtension == "zip" }
+                actionTitle = "ZIP Files"
             }
         }
 
-        val adapter = FileAdapter(files)
-        val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerview)
-        recyclerView.adapter = adapter
         adapter.setOnItemClickListener(object : OnItemClickListener{
             override fun onItemClick(position: Int) {
-                println("Position: $position")
-                val file = files[position]
-                val intent = Intent(activity, DetailsActivity::class.java).apply {
-                    putExtra("FILE", file)
+                viewModel.filePosition = position
+                viewModel.actionTitle = actionTitle
+                viewModel.position.value = -1
+                parentFragmentManager.commit {
+                    replace(R.id.mainFragment, DetailsFragment())
                 }
-                startActivity(intent)
             }
         })
-        recyclerView.layoutManager = LinearLayoutManager(context)
-    }
 
+        recyclerView.layoutManager = LinearLayoutManager(context)
+
+        println("IN FILE LIST: ${viewModel.modifiedList.value}")
+
+        viewModel.modifiedList.observe(viewLifecycleOwner,Observer{
+            println("Data class $it")
+            adapter.setFiles(it)
+            recyclerView.adapter = adapter
+        })
+    }
 }

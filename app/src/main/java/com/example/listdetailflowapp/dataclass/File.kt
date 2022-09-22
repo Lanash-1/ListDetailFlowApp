@@ -1,4 +1,4 @@
-package com.example.listdetailflowapp
+package com.example.listdetailflowapp.dataclass
 
 import java.io.Serializable
 

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:title="search"
+        android:id="@+id/search"
+        android:orderInCategory="0"
+        app:showAsAction="ifRoom|withText"
+        android:icon="@drawable/ic_action_search"
+        app:actionViewClass="android.widget.SearchView"/>
+
+    <item
+        android:title="filter"
+        android:id="@+id/filter"
+        android:orderInCategory="0"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_action_filter">
+        <menu>
+            <item android:title="ALL FILES"
+                android:id="@+id/allFiles"
+                app:showAsAction="always" />
+            <item android:title="PDF"
+                android:id="@+id/pdf"
+                app:showAsAction="always"
+                />
+            <item android:title="IMAGE"
+                android:id="@+id/image"
+                app:showAsAction="always" />
+            <item android:title="APK"
+                android:id="@+id/apk"
+                app:showAsAction="always" />
+            <item android:title="TEXT"
+                android:id="@+id/txt"
+                app:showAsAction="always"
+                />
+            <item android:title="DOC"
+                android:id="@+id/doc"
+                app:showAsAction="always" />
+            <item android:title="PPT"
+                android:id="@+id/ppt"
+                app:showAsAction="always" />
+            <item
+                android:title="ZIP"
+                android:id="@+id/zip"
+                app:showAsAction="always"/>
+        </menu>
+    </item>
+
+</menu>
