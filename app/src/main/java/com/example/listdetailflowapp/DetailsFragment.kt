@@ -7,13 +7,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import com.example.listdetailflowapp.databinding.FragmentDetailsBinding
-
+import com.example.listdetailflowapp.dataclass.File
 
 class DetailsFragment : Fragment() {
 
     private val viewModel: FilesViewModel by activityViewModels()
 
     lateinit var binding: FragmentDetailsBinding
+
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,18 +30,21 @@ class DetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
         val position = viewModel.filePosition
 
-        val fileList = viewModel.modifiedList.value
+        var fileList: List<File>
 
+        if(viewModel.isSearched){
+            fileList = listOf(viewModel.finalList[position])
+        }else{
+            fileList = viewModel.modifiedList.value!!
+        }
 
         val viewPager = binding.detailViewPager
-        val adapter = DetailsPagerAdapter(fileList!!)
+        val adapter = DetailsPagerAdapter(fileList)
         viewPager.adapter = adapter
         viewPager.setCurrentItem(position, false)
-
-
-
 
     }
 }

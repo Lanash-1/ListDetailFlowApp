@@ -8,6 +8,10 @@ import com.example.listdetailflowapp.dataclass.File
 class FilesViewModel: ViewModel(){
     var modifiedList = MutableLiveData<List<File>>()
 
+    var searchedList = MutableLiveData<List<File>>()
+
+    var finalList = listOf<File>()
+
     var position = MutableLiveData<Int>()
 
     var fileList = mutableListOf(
@@ -26,6 +30,12 @@ class FilesViewModel: ViewModel(){
     var filePosition = 0
 
     var actionTitle = "Files"
+
+    var queryString: String = ""
+
+    var isSearched = false
+
+    var moved = false
 
 
 
