@@ -2,20 +2,13 @@ package com.example.listdetailflowapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
 import android.view.MenuItem
-import android.view.View
-import androidx.appcompat.widget.SearchView
 import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.core.view.isVisible
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.commit
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.RecyclerView
 import com.example.listdetailflowapp.dataclass.File
 import com.google.android.material.navigation.NavigationView
-import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -39,11 +32,15 @@ class MainActivity : AppCompatActivity() {
 
         viewModel = ViewModelProvider(this)[FilesViewModel::class.java]
 
-        if (savedInstanceState == null) {
-            supportFragmentManager.commit {
-                replace(R.id.mainFragment, MainFragment())
-                addToBackStack("main")
-            }
+//        if (savedInstanceState == null) {
+//            supportFragmentManager.commit {
+//                replace(R.id.mainFragment, MainFragment())
+//                addToBackStack("main")
+//            }
+//        }
+        supportFragmentManager.commit {
+            replace(R.id.mainFragment, MainFragment())
+            addToBackStack("main")
         }
 
         val navView = findViewById<NavigationView>(R.id.navView)
@@ -69,45 +66,6 @@ class MainActivity : AppCompatActivity() {
             true
         }
     }
-
-//    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-//        menuInflater.inflate(R.menu.main, menu)
-//        val item = menu.findItem(R.id.search)
-//        val searchView = item.actionView as SearchView
-//
-//        viewModel.position.observe(this, Observer{
-//            invalidateOptionsMenu()
-//            if(it != 0 || it == -1){
-//                menu.findItem(R.id.filter).isVisible = false
-//            }
-//            if(it == -1){
-//                searchView.invalidate()
-//                menu.findItem(R.id.search).isVisible = false
-//                supportActionBar?.setDisplayHomeAsUpEnabled(true)
-//            }
-//        })
-//
-//
-//        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
-//            override fun onQueryTextSubmit(query: String?): Boolean {
-//                return false
-//            }
-//
-//            override fun onQueryTextChange(newText: String?): Boolean {
-//                println(newText)
-//                if(!newText!!.isEmpty()){
-//                    viewModel.searchedList.value = viewModel.modifiedList.value?.filter {
-//                        it.fileName.lowercase(Locale.getDefault()).contains(newText.lowercase())
-//                    }
-//                }else{
-//                    viewModel.searchedList.value = viewModel.modifiedList.value
-//                }
-//                return true
-//            }
-//
-//        })
-//        return super.onCreateOptionsMenu(menu)
-//    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val list = viewModel.fileList
@@ -215,5 +173,4 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.restoreBackStack("main")
         super.onBackPressed()
     }
-
 }

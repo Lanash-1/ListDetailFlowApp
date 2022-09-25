@@ -11,7 +11,7 @@
         app:actionViewClass="androidx.appcompat.widget.SearchView"/>
 
     <item
-        android:title="filter"
+        android:title="FILTER"
         android:id="@+id/filter"
         android:orderInCategory="0"
         app:showAsAction="always"

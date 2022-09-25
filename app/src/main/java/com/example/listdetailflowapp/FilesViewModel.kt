@@ -29,8 +29,6 @@ class FilesViewModel: ViewModel(){
 
     var filePosition = 0
 
-    var actionTitle = "Files"
-
     var queryString: String = ""
 
     var isSearched = false
@@ -38,9 +36,4 @@ class FilesViewModel: ViewModel(){
     var moved = false
 
 
-
-
-    fun getList(): LiveData<List<File>>{
-        return modifiedList
-    }
 }

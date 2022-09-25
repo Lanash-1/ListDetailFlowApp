@@ -24,6 +24,7 @@ class MainFragment : Fragment() {
         setHasOptionsMenu(true)
     }
 
+
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.main, menu)
         val item = menu.findItem(R.id.search)
@@ -43,7 +44,7 @@ class MainFragment : Fragment() {
 
             override fun onQueryTextChange(newText: String?): Boolean {
                 println(newText)
-                if(!newText!!.isEmpty()){
+                if(newText!!.isNotEmpty()){
                     viewModel.searchedList.value = viewModel.modifiedList.value?.filter {
                         it.fileName.lowercase(Locale.getDefault()).contains(newText.lowercase())
                     }!!
@@ -53,7 +54,6 @@ class MainFragment : Fragment() {
                     if(!viewModel.moved){
                         viewModel.searchedList.value = viewModel.modifiedList.value!!
                     }
-//                    viewModel.searchedList.value = viewModel.modifiedList.value!!
                 }
                 return true
             }
@@ -128,8 +128,6 @@ class MainFragment : Fragment() {
                 override fun onPageSelected(position: Int) {
                     super.onPageSelected(position)
                     modifyList(position, files)
-                    println("POSITION : $position")
-                    println("MODIFIES: ${viewModel.modifiedList.value}")
                     viewModel.position.value = position
                 }
             }
