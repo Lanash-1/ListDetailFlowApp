@@ -32,12 +32,14 @@ class FileListFragment : Fragment() {
                 if(viewModel.queryString.isEmpty()){
                     viewModel.isSearched = false
                     viewModel.finalList = viewModel.modifiedList.value!!
-                    viewModel.moved = true
+//                    viewModel.moved = true
                 }else{
                     viewModel.isSearched = true
                     viewModel.finalList = viewModel.searchedList.value!!
                 }
+                viewModel.moved = true
                 parentFragmentManager.commit {
+                    addToBackStack(null)
                     replace(R.id.mainFragment, DetailsFragment())
                 }
             }

@@ -32,12 +32,6 @@ class MainActivity : AppCompatActivity() {
 
         viewModel = ViewModelProvider(this)[FilesViewModel::class.java]
 
-//        if (savedInstanceState == null) {
-//            supportFragmentManager.commit {
-//                replace(R.id.mainFragment, MainFragment())
-//                addToBackStack("main")
-//            }
-//        }
         supportFragmentManager.commit {
             replace(R.id.mainFragment, MainFragment())
             addToBackStack("main")
@@ -171,6 +165,6 @@ class MainActivity : AppCompatActivity() {
             replace(R.id.mainFragment, MainFragment())
         }
         supportFragmentManager.restoreBackStack("main")
-        super.onBackPressed()
+//        super.onBackPressed()
     }
 }

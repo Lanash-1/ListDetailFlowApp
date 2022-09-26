@@ -15,6 +15,7 @@ import java.util.*
 
 class MainFragment : Fragment() {
 
+
     private lateinit var binding: FragmentMainBinding
 
     val viewModel: FilesViewModel by activityViewModels()
@@ -30,6 +31,16 @@ class MainFragment : Fragment() {
         val item = menu.findItem(R.id.search)
         val searchView = item.actionView as SearchView
 
+        if(viewModel.queryString!!.isNotEmpty()){
+            searchView.isIconified = true
+            item.expandActionView()
+            searchView.setQuery(viewModel.queryString, false)
+            searchView.isFocusable = true
+            viewModel.searchedList.value = viewModel.modifiedList.value?.filter {
+                it.fileName.lowercase().contains(viewModel.queryString)
+            }!!
+        }
+
         viewModel.position.observe(this, Observer{
             activity?.invalidateOptionsMenu()
             if(it != 0){
@@ -37,21 +48,35 @@ class MainFragment : Fragment() {
             }
         })
 
+
+        searchView.setOnCloseListener(object : SearchView.OnCloseListener{
+            override fun onClose(): Boolean {
+                viewModel.queryString = ""
+                viewModel.searchedList.value = viewModel.modifiedList.value
+                return true
+            }
+
+        })
+
+
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return false
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                println(newText)
                 if(newText!!.isNotEmpty()){
                     viewModel.searchedList.value = viewModel.modifiedList.value?.filter {
                         it.fileName.lowercase(Locale.getDefault()).contains(newText.lowercase())
                     }!!
                     viewModel.queryString = newText
+                    if(viewModel.moved){
+                        viewModel.moved = false
+                    }
                 }else{
-                    viewModel.queryString = newText
                     if(!viewModel.moved){
+                        viewModel.moved = false
+                        viewModel.queryString = newText
                         viewModel.searchedList.value = viewModel.modifiedList.value!!
                     }
                 }
