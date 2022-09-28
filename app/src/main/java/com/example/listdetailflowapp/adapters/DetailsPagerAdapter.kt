@@ -1,4 +1,4 @@
-package com.example.listdetailflowapp
+package com.example.listdetailflowapp.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

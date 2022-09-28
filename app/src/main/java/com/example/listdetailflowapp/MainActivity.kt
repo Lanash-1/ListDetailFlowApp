@@ -8,6 +8,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.commit
 import androidx.lifecycle.ViewModelProvider
 import com.example.listdetailflowapp.dataclass.File
+import com.example.listdetailflowapp.viewmodel.FilesViewModel
 import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -66,6 +67,7 @@ class MainActivity : AppCompatActivity() {
         if(toggle.onOptionsItemSelected(item)){
             return true
         }
+        println(item.title)
         return when(item.itemId){
             R.id.allFiles -> {
                 modifyList(0, list)
@@ -162,9 +164,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         supportFragmentManager.commit {
+            addToBackStack(null)
             replace(R.id.mainFragment, MainFragment())
         }
         supportFragmentManager.restoreBackStack("main")
-//        super.onBackPressed()
     }
 }

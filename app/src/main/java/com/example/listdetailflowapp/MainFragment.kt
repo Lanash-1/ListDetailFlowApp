@@ -7,10 +7,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.viewpager2.widget.ViewPager2
+import com.example.listdetailflowapp.adapters.ViewPagerAdapter
 import com.example.listdetailflowapp.databinding.FragmentMainBinding
 import com.example.listdetailflowapp.dataclass.File
+import com.example.listdetailflowapp.viewmodel.FilesViewModel
 import com.google.android.material.tabs.TabLayoutMediator
-import java.util.*
 
 
 class MainFragment : Fragment() {
@@ -39,6 +40,7 @@ class MainFragment : Fragment() {
             viewModel.searchedList.value = viewModel.modifiedList.value?.filter {
                 it.fileName.lowercase().contains(viewModel.queryString)
             }!!
+//            viewModel.moved = false
         }
 
         viewModel.position.observe(this, Observer{
@@ -52,12 +54,11 @@ class MainFragment : Fragment() {
         searchView.setOnCloseListener(object : SearchView.OnCloseListener{
             override fun onClose(): Boolean {
                 viewModel.queryString = ""
+                searchView.clearFocus()
                 viewModel.searchedList.value = viewModel.modifiedList.value
                 return true
             }
-
         })
-
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
@@ -67,17 +68,14 @@ class MainFragment : Fragment() {
             override fun onQueryTextChange(newText: String?): Boolean {
                 if(newText!!.isNotEmpty()){
                     viewModel.searchedList.value = viewModel.modifiedList.value?.filter {
-                        it.fileName.lowercase(Locale.getDefault()).contains(newText.lowercase())
+                        it.fileName.lowercase().contains(newText.lowercase())
                     }!!
                     viewModel.queryString = newText
-                    if(viewModel.moved){
-                        viewModel.moved = false
-                    }
                 }else{
                     if(!viewModel.moved){
-                        viewModel.moved = false
                         viewModel.queryString = newText
                         viewModel.searchedList.value = viewModel.modifiedList.value!!
+                        viewModel.moved = false
                     }
                 }
                 return true

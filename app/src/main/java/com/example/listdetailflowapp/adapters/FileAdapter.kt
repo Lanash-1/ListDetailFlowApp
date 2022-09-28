@@ -1,14 +1,15 @@
-package com.example.listdetailflowapp
+package com.example.listdetailflowapp.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.listdetailflowapp.OnItemClickListener
 import com.example.listdetailflowapp.databinding.ItemFileBinding
 import com.example.listdetailflowapp.dataclass.File
 
 class FileAdapter (
 
-) : RecyclerView.Adapter<FileAdapter.FileViewHolder>(), OnItemClickListener{
+) : RecyclerView.Adapter<FileAdapter.FileViewHolder>(), OnItemClickListener {
     private lateinit var files: List<File>
     private lateinit var listener: OnItemClickListener
     fun setFiles(files: List<File>){

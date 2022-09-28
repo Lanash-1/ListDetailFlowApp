@@ -1,8 +1,8 @@
-package com.example.listdetailflowapp
+package com.example.listdetailflowapp.viewmodel
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.listdetailflowapp.R
 import com.example.listdetailflowapp.dataclass.File
 
 class FilesViewModel: ViewModel(){

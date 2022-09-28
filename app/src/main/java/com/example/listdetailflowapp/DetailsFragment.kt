@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import com.example.listdetailflowapp.adapters.DetailsPagerAdapter
 import com.example.listdetailflowapp.databinding.FragmentDetailsBinding
 import com.example.listdetailflowapp.dataclass.File
+import com.example.listdetailflowapp.viewmodel.FilesViewModel
 
 class DetailsFragment : Fragment() {
 

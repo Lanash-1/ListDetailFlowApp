@@ -6,6 +6,8 @@ import androidx.fragment.app.*
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.listdetailflowapp.adapters.FileAdapter
+import com.example.listdetailflowapp.viewmodel.FilesViewModel
 
 class FileListFragment : Fragment() {
 
@@ -39,14 +41,17 @@ class FileListFragment : Fragment() {
                 }
                 viewModel.moved = true
                 parentFragmentManager.commit {
-                    addToBackStack(null)
+                    setCustomAnimations(R.anim.slide_in, R.anim.fade_out, R.anim.fade_in, R.anim.slide_out)
+//                    setCustomAnimations(R.anim.slide_in, R.anim.fade_out)
                     replace(R.id.mainFragment, DetailsFragment())
+                    addToBackStack(null)
                 }
             }
         })
 
         recyclerView.layoutManager = LinearLayoutManager(context)
 
+//        recyclerView.layoutManager = GridLayoutManager(context,2)
 
         viewModel.modifiedList.observe(viewLifecycleOwner,Observer{
             adapter.setFiles(it)
