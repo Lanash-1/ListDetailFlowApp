@@ -22,7 +22,6 @@
         android:layout_height="wrap_content"
         android:text="Filename.ext"
         android:textAlignment="center"
-        android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -36,7 +35,6 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="Location: "
-        android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
@@ -59,7 +57,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Size: "
-        android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/locationTxt"
@@ -82,22 +79,30 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Date Created: "
-        android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/sizeTxt"
         app:layout_constraintTop_toBottomOf="@+id/sizeTxt" />
 
+
     <TextView
         android:id="@+id/date"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
         android:text="16/12/22"
-        android:textSize="16sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/dateTxt"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/dateTxt" />
+
+    <ImageView
+        android:id="@+id/datePickerIcon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginLeft="8dp"
+        android:src="@drawable/ic_baseline_date_range_24"
+        app:layout_constraintBottom_toBottomOf="@+id/date"
+        app:layout_constraintStart_toEndOf="@+id/date"
+        app:layout_constraintTop_toTopOf="@+id/date"
+        app:layout_constraintVertical_bias="0.4" />
 
     <TextView
         android:id="@+id/hiddenTxt"
@@ -105,7 +110,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Hidden: "
-        android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/dateTxt"
@@ -128,7 +132,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Readable: "
-        android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/hiddenTxt"
@@ -151,7 +154,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Writable: "
-        android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/readableTxt"

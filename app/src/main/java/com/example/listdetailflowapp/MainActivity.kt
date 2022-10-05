@@ -21,7 +21,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
         val drawerLayout = findViewById<DrawerLayout>(R.id.drawerLayout)
 
         toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)

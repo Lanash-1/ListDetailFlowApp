@@ -5,17 +5,33 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.listdetailflowapp.databinding.ItemDetailsBinding
 import com.example.listdetailflowapp.dataclass.File
+import com.example.listdetailflowapp.interfaces.OnClickDatePicker
 
 class DetailsPagerAdapter(
     private val list: List<File>
-): RecyclerView.Adapter<DetailsPagerAdapter.DetailsPagerViewHolder>() {
+): RecyclerView.Adapter<DetailsPagerAdapter.DetailsPagerViewHolder>(), OnClickDatePicker {
 
-    inner class DetailsPagerViewHolder(val binding: ItemDetailsBinding) : RecyclerView.ViewHolder(binding.root)
+    private lateinit var listener: OnClickDatePicker
+
+    fun setOnClickDatePicker(listener: OnClickDatePicker){
+        this.listener = listener
+    }
+
+    class DetailsPagerViewHolder(val binding: ItemDetailsBinding, listener: OnClickDatePicker) : RecyclerView.ViewHolder(binding.root)
+        {
+        init {
+
+            val datePicker = binding.datePickerIcon
+            datePicker.setOnClickListener {
+                listener.onIconClick(absoluteAdapterPosition)
+            }
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DetailsPagerViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding = ItemDetailsBinding.inflate(layoutInflater, parent, false)
-        return DetailsPagerViewHolder(binding)
+        return DetailsPagerViewHolder(binding, listener)
     }
 
     override fun onBindViewHolder(holder: DetailsPagerViewHolder, position: Int) {
@@ -57,5 +73,9 @@ class DetailsPagerAdapter(
 
     override fun getItemCount(): Int {
         return list.size
+    }
+
+    override fun onIconClick(absoluteAdapterPosition: Int) {
+        TODO("Not yet implemented")
     }
 }

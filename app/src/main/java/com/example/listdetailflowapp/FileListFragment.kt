@@ -7,6 +7,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.listdetailflowapp.adapters.FileAdapter
+import com.example.listdetailflowapp.interfaces.OnItemClickListener
 import com.example.listdetailflowapp.viewmodel.FilesViewModel
 
 class FileListFragment : Fragment() {
@@ -27,7 +28,7 @@ class FileListFragment : Fragment() {
 //        val position = arguments?.getInt("object")
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerview)
 
-        adapter.setOnItemClickListener(object : OnItemClickListener{
+        adapter.setOnItemClickListener(object : OnItemClickListener {
             override fun onItemClick(position: Int) {
                 viewModel.filePosition = position
                 viewModel.position.value = -1

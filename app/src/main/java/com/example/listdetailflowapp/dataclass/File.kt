@@ -9,7 +9,7 @@ data class File(
     val location: String,
     val size: Double,
     val sizeExtension: String,
-    val createdDate: String,
+    var createdDate: String,
     val hidden: Boolean,
     val readable: Boolean,
     val writable: Boolean

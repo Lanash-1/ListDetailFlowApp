@@ -35,5 +35,11 @@ class FilesViewModel: ViewModel(){
 
     var moved = false
 
+    var date: Int = 0
+    var month: Int = 0
+    var year: Int = 0
+
+    var dateText = MutableLiveData<String>()
+
 
 }

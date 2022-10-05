@@ -3,7 +3,7 @@ package com.example.listdetailflowapp.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.listdetailflowapp.OnItemClickListener
+import com.example.listdetailflowapp.interfaces.OnItemClickListener
 import com.example.listdetailflowapp.databinding.ItemFileBinding
 import com.example.listdetailflowapp.dataclass.File
 
