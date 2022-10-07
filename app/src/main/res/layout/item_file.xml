@@ -32,19 +32,30 @@
         app:layout_constraintStart_toEndOf="@+id/fileIcon"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/dateText"
+<!--    <TextView-->
+<!--        android:id="@+id/dateText"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Date created: 12/12/12"-->
+<!--        android:textSize="12sp"-->
+<!--        android:layout_marginRight="16dp"-->
+<!--        android:layout_marginBottom="16dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/fileNameText"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/fileNameText" />-->
+
+    <com.example.listdetailflowapp.ItemCustomView
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Date created: 12/12/12"
-        android:textSize="12sp"
-        android:layout_marginRight="16dp"
+        android:layout_height="0dp"
+        android:id="@+id/itemView"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/fileNameText"
-        app:layout_constraintTop_toBottomOf="@+id/fileNameText" />
+        app:layout_constraintEnd_toEndOf="@id/fileNameText"
+        app:layout_constraintTop_toBottomOf="@id/fileNameText"
+        />
     
 
     <com.google.android.material.divider.MaterialDivider
