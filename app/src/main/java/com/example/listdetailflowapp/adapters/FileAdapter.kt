@@ -36,7 +36,8 @@ class FileAdapter (
     override fun onBindViewHolder(holder: FileViewHolder, position: Int) {
         holder.binding.apply {
             fileNameText.text = "${files[position].fileName}.${files[position].fileExtension}"
-//            dateText.text = "Date created: ${files[position].createdDate}"
+            dateText.text = "Date created: ${files[position].createdDate}"
+            sizeText.text = "Size: ${files[position].size} ${files[position].sizeExtension}"
             fileIcon.setImageResource(files[position].image)
         }
     }
