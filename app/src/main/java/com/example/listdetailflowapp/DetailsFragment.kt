@@ -17,14 +17,14 @@ class DetailsFragment : Fragment() {
 
     private val viewModel: FilesViewModel by activityViewModels()
 
-    lateinit var binding: FragmentDetailsBinding
+    private lateinit var binding: FragmentDetailsBinding
 
     var editedPosition: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentDetailsBinding.inflate(inflater,container,false)
         return binding.root
     }
@@ -34,32 +34,39 @@ class DetailsFragment : Fragment() {
 
         val position = viewModel.filePosition
 
-        var fileList: List<File>
-
-        if(viewModel.isSearched){
-            fileList = listOf(viewModel.finalList[position])
+        val fileList: List<File> = if(viewModel.isSearched){
+            listOf(viewModel.finalList[position])
         }else{
-            fileList = viewModel.modifiedList.value!!
+            viewModel.modifiedList.value!!
         }
 
+
         val viewPager = binding.detailViewPager
-        var adapter = DetailsPagerAdapter(fileList)
+        val adapter = DetailsPagerAdapter()
+        adapter.setList(fileList)
         viewPager.adapter = adapter
         viewPager.setCurrentItem(position, false)
 
 
         adapter.setOnClickDatePicker(object : OnClickDatePicker {
+
             override fun onIconClick(absoluteAdapterPosition: Int) {
+                editedPosition = absoluteAdapterPosition
                 val datePickerFragment = DatePickerFragment()
                 datePickerFragment.show(parentFragmentManager, "datePicker")
-                fileList[absoluteAdapterPosition].createdDate = "${viewModel.date}/${viewModel.month}/${viewModel.year}"
-                editedPosition = absoluteAdapterPosition
-                viewModel.dateText.value = "${viewModel.date}/${viewModel.month}/${viewModel.year}"
             }
         })
 
-        viewModel.dateText.observe(viewLifecycleOwner, Observer{
-            println("DATE CHANGED - ${viewModel.dateText.value}")
+        viewModel.edited.observe(viewLifecycleOwner, Observer{
+            val fileId = fileList[editedPosition].id
+            viewModel.fileList[fileId - 1].createdDate = "${viewModel.date}/${viewModel.month}/${viewModel.year}"
+            fileList[editedPosition].createdDate = viewModel.fileList[fileId - 1].createdDate
+            adapter.setList(fileList)
+            adapter.notifyDataSetChanged()
+//            viewPager.adapter = adapter
+//            viewPager.setCurrentItem(editedPosition, false)
         })
     }
+
+
 }

@@ -166,6 +166,6 @@ class MainActivity : AppCompatActivity() {
             addToBackStack(null)
             replace(R.id.mainFragment, MainFragment())
         }
-        supportFragmentManager.restoreBackStack("main")
+//        supportFragmentManager.restoreBackStack("main")
     }
 }

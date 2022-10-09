@@ -7,9 +7,13 @@ import com.example.listdetailflowapp.databinding.ItemDetailsBinding
 import com.example.listdetailflowapp.dataclass.File
 import com.example.listdetailflowapp.interfaces.OnClickDatePicker
 
-class DetailsPagerAdapter(
-    private val list: List<File>
-): RecyclerView.Adapter<DetailsPagerAdapter.DetailsPagerViewHolder>(), OnClickDatePicker {
+class DetailsPagerAdapter: RecyclerView.Adapter<DetailsPagerAdapter.DetailsPagerViewHolder>(), OnClickDatePicker {
+
+    private lateinit var list: List<File>
+
+    fun setList(list: List<File>){
+        this.list = list
+    }
 
     private lateinit var listener: OnClickDatePicker
 
@@ -20,7 +24,6 @@ class DetailsPagerAdapter(
     class DetailsPagerViewHolder(val binding: ItemDetailsBinding, listener: OnClickDatePicker) : RecyclerView.ViewHolder(binding.root)
         {
         init {
-
             val datePicker = binding.datePickerIcon
             datePicker.setOnClickListener {
                 listener.onIconClick(absoluteAdapterPosition)

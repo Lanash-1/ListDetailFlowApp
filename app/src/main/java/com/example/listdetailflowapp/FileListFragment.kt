@@ -25,7 +25,6 @@ class FileListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        val position = arguments?.getInt("object")
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerview)
 
         adapter.setOnItemClickListener(object : OnItemClickListener {
@@ -35,7 +34,6 @@ class FileListFragment : Fragment() {
                 if(viewModel.queryString.isEmpty()){
                     viewModel.isSearched = false
                     viewModel.finalList = viewModel.modifiedList.value!!
-//                    viewModel.moved = true
                 }else{
                     viewModel.isSearched = true
                     viewModel.finalList = viewModel.searchedList.value!!

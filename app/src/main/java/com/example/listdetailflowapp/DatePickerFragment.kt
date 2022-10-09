@@ -15,9 +15,9 @@ class DatePickerFragment : DialogFragment(), DatePickerDialog.OnDateSetListener 
 
     private val viewModel: FilesViewModel by activityViewModels()
 
-    var date: Int = 0
-    var month: Int = 0
-    var year: Int = 0
+    private var date: Int = 0
+    private var month: Int = 0
+    private var year: Int = 0
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val calendar = Calendar.getInstance()
@@ -36,6 +36,7 @@ class DatePickerFragment : DialogFragment(), DatePickerDialog.OnDateSetListener 
         viewModel.date = p3
         viewModel.month = p2 + 1
         viewModel.year = p1
+        viewModel.edited.value = true
     }
 
     override fun onCancel(dialog: DialogInterface) {

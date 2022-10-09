@@ -5,8 +5,8 @@ import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
 
-
 class ItemCustomView(context: Context?, attrs: AttributeSet?) : ViewGroup(context, attrs) {
+
     override fun onLayout(p0: Boolean, p1: Int, p2: Int, p3: Int, p4: Int) {
         val childCount = childCount
         var prevChildRight = 0
@@ -19,6 +19,7 @@ class ItemCustomView(context: Context?, attrs: AttributeSet?) : ViewGroup(contex
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+
         var totalWidth = 0
         var totalHeight = 0
         val childCount = childCount

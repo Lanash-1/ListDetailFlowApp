@@ -13,9 +13,7 @@ import com.example.listdetailflowapp.dataclass.File
 import com.example.listdetailflowapp.viewmodel.FilesViewModel
 import com.google.android.material.tabs.TabLayoutMediator
 
-
 class MainFragment : Fragment() {
-
 
     private lateinit var binding: FragmentMainBinding
 
@@ -40,7 +38,6 @@ class MainFragment : Fragment() {
             viewModel.searchedList.value = viewModel.modifiedList.value?.filter {
                 it.fileName.lowercase().contains(viewModel.queryString)
             }!!
-//            viewModel.moved = false
         }
 
         viewModel.position.observe(this, Observer{
