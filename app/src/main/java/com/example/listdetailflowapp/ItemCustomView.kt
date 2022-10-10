@@ -13,8 +13,11 @@ class ItemCustomView(context: Context?, attrs: AttributeSet?) : ViewGroup(contex
         val prevChildBottom = 0
         for(i in 0 until childCount){
             val child: View = getChildAt(i)
+            if(i != 2){
+                child.setPadding(0,0,20,0)
+            }
             child.layout(prevChildRight, prevChildBottom, prevChildRight+child.measuredWidth, prevChildBottom+child.measuredHeight)
-            prevChildRight += child.measuredWidth + 30
+            prevChildRight += child.measuredWidth
         }
     }
 
@@ -25,8 +28,11 @@ class ItemCustomView(context: Context?, attrs: AttributeSet?) : ViewGroup(contex
         val childCount = childCount
         for(i in 0 until childCount){
             val child: View = getChildAt(i)
+            if(i != 2){
+                child.setPadding(0,0,20,0)
+            }
             measureChild(child, widthMeasureSpec, heightMeasureSpec)
-            totalWidth += child.measuredWidth + 30
+            totalWidth += child.measuredWidth
             if(child.measuredHeight > totalHeight){
                 totalHeight = child.measuredHeight
             }
