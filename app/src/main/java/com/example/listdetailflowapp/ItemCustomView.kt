@@ -23,6 +23,7 @@ class ItemCustomView(context: Context?, attrs: AttributeSet?) : ViewGroup(contex
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
 
+
         var totalWidth = 0
         var totalHeight = 0
         val childCount = childCount

@@ -35,7 +35,7 @@
 
     <com.example.listdetailflowapp.ItemCustomView
         android:id="@+id/itemView"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
@@ -61,12 +61,12 @@
             android:text="Size: 5.5MB"
             android:maxLines="1"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/extraText"
-                    android:text="IMPORTANT"
-                    />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/extraText"
+                android:text="NotSynced"
+                />
 
     </com.example.listdetailflowapp.ItemCustomView>
 
