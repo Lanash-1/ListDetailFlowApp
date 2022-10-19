@@ -1,6 +1,7 @@
 package com.example.listdetailflowapp.adapters
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.listdetailflowapp.interfaces.OnItemClickListener
@@ -9,7 +10,7 @@ import com.example.listdetailflowapp.dataclass.File
 
 class FileAdapter (
 
-) : RecyclerView.Adapter<FileAdapter.FileViewHolder>(), OnItemClickListener {
+) : RecyclerView.Adapter<FileAdapter.FileViewHolder>() {
     private lateinit var files: List<File>
     private lateinit var listener: OnItemClickListener
     fun setFiles(files: List<File>){
@@ -39,6 +40,15 @@ class FileAdapter (
             dateText.text = "Date: ${files[position].createdDate}"
             sizeText.text = "Size: ${files[position].size} ${files[position].sizeExtension}"
             fileIcon.setImageResource(files[position].image)
+
+            if(files[position].readable){
+                read.visibility = View.VISIBLE
+                read.text = "Readable"
+            }
+            if(files[position].writable){
+                write.visibility = View.VISIBLE
+                write.text = "writable"
+            }
         }
     }
 
@@ -46,8 +56,8 @@ class FileAdapter (
         return files.size
     }
 
-    override fun onItemClick(position: Int) {
-        TODO("Not yet implemented")
-    }
+//    override fun onItemClick(position: Int) {
+//        TODO("Not yet implemented")
+//    }
 
 }

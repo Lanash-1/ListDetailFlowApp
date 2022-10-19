@@ -7,7 +7,7 @@ import com.example.listdetailflowapp.databinding.ItemDetailsBinding
 import com.example.listdetailflowapp.dataclass.File
 import com.example.listdetailflowapp.interfaces.OnClickDatePicker
 
-class DetailsPagerAdapter: RecyclerView.Adapter<DetailsPagerAdapter.DetailsPagerViewHolder>(), OnClickDatePicker {
+class DetailsPagerAdapter: RecyclerView.Adapter<DetailsPagerAdapter.DetailsPagerViewHolder>() {
 
     private lateinit var list: List<File>
 
@@ -78,7 +78,4 @@ class DetailsPagerAdapter: RecyclerView.Adapter<DetailsPagerAdapter.DetailsPager
         return list.size
     }
 
-    override fun onIconClick(absoluteAdapterPosition: Int) {
-        TODO("Not yet implemented")
-    }
 }
