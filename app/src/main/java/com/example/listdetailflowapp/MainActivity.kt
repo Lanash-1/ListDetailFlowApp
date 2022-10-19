@@ -43,14 +43,14 @@ class MainActivity : AppCompatActivity() {
             when(it.itemId){
                 R.id.home -> {
                     println("Home")
-                    supportFragmentManager?.commit {
+                    supportFragmentManager.commit {
                         replace(R.id.mainFragment, MainFragment())
                     }
                     drawerLayout.closeDrawers()
                 }
                 R.id.settings -> {
                     println("settings")
-                    supportFragmentManager?.commit {
+                    supportFragmentManager.commit {
                         replace(R.id.mainFragment, SettingsFragment())
                         viewModel.position.value = -1
                     }
